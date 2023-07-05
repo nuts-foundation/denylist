@@ -1,0 +1,14 @@
+[
+	{
+		"issuer": "CN=Nuts Development Network Root CA",
+		"jwkthumbprint": "RvYDcsBAAyfKES4VMOAk5cvmUEVYDhSqQMQVMPBnWh4",
+		"serialnumber": "331448374916236330459632315774765041135590654192",
+		"reason": "gerard can tell you"
+	},
+	{
+		"issuer": "CN=Nuts Development Network Root CA",
+		"jwkthumbprint": "SXXNF14KAd5aqdeFWXL7gbNW9g9bJUwVfcy-nw_sUmk",
+		"serialnumber": "316990454064926253224623110668298023584194098193",
+		"reason": "development network issues"
+	}
+]
