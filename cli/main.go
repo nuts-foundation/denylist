@@ -27,24 +27,11 @@ import (
 	"github.com/lestrrat-go/jwx/jwa"
 	"github.com/lestrrat-go/jwx/jwk"
 	"github.com/lestrrat-go/jwx/jws"
+
+	"github.com/nuts-foundation/denylist"
 )
 
-// denylistEntry contains parameters for an X.509 certificate that must not be accepted for TLS connections
-type denylistEntry struct {
-	// Issuer is a string representation (x509.Certificate.Issuer.String()) of the certificate
-	Issuer string `json:"issuer"`
-
-	// SerialNumber is a string representation (x509.Certificate.SerialNumber.String()) of the certificate
-	SerialNumber string `json:"serialnumber"`
-
-	// JWKThumbprint is an identifier of the public key per https://www.rfc-editor.org/rfc/rfc7638
-	JWKThumbprint string `json:"jwkthumbprint"`
-
-	// Reason is the reason for which the certificate is being denied
-	Reason string `json:"reason"`
-}
-
-func encodeDenylist(entries []denylistEntry) string {
+func encodeDenylist(entries []denylist.Entry) string {
 	// Encode the denylist as JSON
 	payload, err := json.Marshal(&entries)
 	if err != nil {
@@ -75,12 +62,12 @@ func encodeDenylist(entries []denylistEntry) string {
 
 func main() {
 	// Load the denylist entries from JSON
-	data, err := os.ReadFile("denylist.json")
+	data, err := os.ReadFile("config/certs.json")
 	if err != nil {
-		log.Fatalf("error reading denylist.json: %s", err)
+		log.Fatalf("error reading config/certs.json: %s", err)
 	}
 
-	var entries []denylistEntry
+	var entries []denylist.Entry
 
 	// Build the denylist contents
 	err = json.Unmarshal(data, &entries)
