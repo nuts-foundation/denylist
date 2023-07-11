@@ -1,5 +1,8 @@
 // dumpcert provides information about a given certificate which is
 // needed in order to add a nuts denylist entry
+//
+// To dump a usable denylist entry for a given PEM certificate file:
+//   go run cli/dumpcert/main.go --cert /path/to/x509.crt
 package main
 
 import (
