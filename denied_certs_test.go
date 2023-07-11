@@ -15,8 +15,8 @@ import (
 )
 
 // Define the paths for the necessary input files
-const publicKeyPath = `out/pubkey.pem`
-const denylistPath = `out/denylist.jws`
+const publicKeyPath = `denylist-out/pubkey.pem`
+const denylistPath = `denylist-out/denylist.jws`
 
 // loadCerts loads the certificate files from the filesystem
 func loadCerts() ([]*x509.Certificate, error) {
