@@ -23,6 +23,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/lestrrat-go/jwx/jwa"
 	"github.com/lestrrat-go/jwx/jwk"
@@ -43,6 +44,9 @@ func encodeDenylist(entries []denylist.Entry) string {
 	if privateKeyPEM == "" {
 		log.Fatal("DENYLIST_PRIVATEKEY_PEM environment variable must not be empty")
 	}
+
+	// Convert any literal '\n' in the PEM to an actual newline character
+	privateKeyPEM = strings.ReplaceAll(privateKeyPEM, "\\n", "\n")
 
 	// Parse the private key for signing the denylist
 	key, err := jwk.ParseKey([]byte(privateKeyPEM), jwk.WithPEM(true))
@@ -79,4 +83,3 @@ func main() {
 	encoded := encodeDenylist(entries)
 	fmt.Println(encoded)
 }
-

@@ -19,3 +19,11 @@
 
 # Go workspace file
 go.work
+
+# IDE stuff
+.idea/
+.vscode/
+
+# being super paranoid
+*.key
+*.pem
