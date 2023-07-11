@@ -1,6 +1,6 @@
 package denylist
 
-// denylistEntry contains parameters for an X.509 certificate that must not be accepted for TLS connections
+// Entry contains parameters for an X.509 certificate that must not be accepted for TLS connections
 type Entry struct {
 	// Issuer is a string representation (x509.Certificate.Issuer.String()) of the certificate
 	Issuer string `json:"issuer"`

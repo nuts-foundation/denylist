@@ -64,7 +64,7 @@ func main() {
 	// Load the denylist entries from JSON
 	data, err := os.ReadFile("config/certs.json")
 	if err != nil {
-		log.Fatalf("error reading denylist.json: %s", err)
+		log.Fatalf("error reading config/certs.json: %s", err)
 	}
 
 	var entries []denylist.Entry
