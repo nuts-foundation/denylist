@@ -115,7 +115,7 @@ This points to the `main` branch on the Github repo.
 
 ## Troubleshooting
 - `error parsing key: failed to parse PEM encoded key: failed to decode PEM data`:  
-  PEM data in an env variable can be a bit iffy. The header and footer should be separated from the key using new line character `\n`.
+  PEM data in an env variable can be a bit iffy. The header and footer should be separated from the key using a literal backslash followed by literal n (so `\n`) which are converted to newline characters after the environment variable is read.
   So `-----BEGIN PRIVATE KEY-----\n<the-actual-key>\n-----END PRIVATE KEY-----`
 
 - `"NutsDenylist" isn't a vault in this account. Specify the vault with its ID or name.`:
