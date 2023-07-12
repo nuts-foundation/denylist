@@ -9,7 +9,7 @@ cryptographically signed published lists of certificates which should not be con
 
 ## Where is the denylist hosted?
 
-The current denylist is located [in this repo](./denylist-out/denylist.jws), along with all of the tools required to generate it. 
+The current denylist is located [in this repo](denylist/denylist.jws), along with all of the tools required to generate it. 
 An externally stored secure private key is also required in order to generate a valid denylist.
 
 For maximum performance and reliability a CDN should be used when configuring production systems to use the denylist.
@@ -68,7 +68,7 @@ Copy this into `config/certs.json` and set the reason for blocking the certifica
 
 
 ## Sign denylist
-The key to sign the denylist is stored in the `NutsDenylist` vault on 1password in the the `PrivateKey` item.
+The key to sign the denylist is stored in the `NutsDenylist` vault on 1password in the `PrivateKey` item.
 
 ### 1password CLI (preferred)
 Install v2 of the 1password CLI by following the [instructions](https://developer.1password.com/docs/cli/get-started/) if needed.
@@ -92,7 +92,7 @@ DENYLIST_PRIVATEKEY_PEM="<private-key>" make denylist
 
 
 ## Publish denylist
-The previous step updated the signed denylist at `denylist-out/denylist.jws`. (DO NOT CHANGE THIS FILE LOCATION/NAME)
+The previous step updated the signed denylist at `denylist/denylist.jws`. (DO NOT CHANGE THIS FILE LOCATION/NAME)
 Assuming the certificate to block was added to `certs/`, validate that the new denylist actually identifies the certificate.
 ```shell
 # validate that the added certifcate is on the denylist
@@ -104,12 +104,12 @@ If the test passes, merge the resulting changes to the `main` branch with a pull
 
 
 ## Clear CDN cache
-The denylist is hosted on github but distributed using [www.jsdelivr.com](https://www.jsdelivr.com), which is "A free CDN for open source projects".
-This CDN operates on top of multiple major CDNs and will provide us with a better uptime than github can.
-The [default cache for jsdelivr](https://www.jsdelivr.com/documentation#id-caching) is 12 hours for files on github branches.
+The denylist is hosted on Github but distributed using [www.jsdelivr.com](https://www.jsdelivr.com), which is "A free CDN for open source projects".
+This CDN operates on top of multiple major CDNs and will provide us with a better uptime than Github can.
+The [default cache for jsdelivr](https://www.jsdelivr.com/documentation#id-caching) is 12 hours for files on Github branches.
 TODO: contact jsdelivr to see if/how we can speed this up.
 
-The denylist file can be found at https://cdn.jsdelivr.net/gh/nuts-foundation/denylist@main/denylist-out/denylist.jws. 
+The denylist file can be found at https://cdn.jsdelivr.net/gh/nuts-foundation/denylist@main/denylist/denylist.jws. 
 This points to the `main` branch on the Github repo.
 
 
