@@ -9,14 +9,14 @@ import (
 	"path/filepath"
 	"testing"
 
-        "github.com/lestrrat-go/jwx/jwa"
-        "github.com/lestrrat-go/jwx/jwk"
-        "github.com/lestrrat-go/jwx/jws"
+	"github.com/lestrrat-go/jwx/jwa"
+	"github.com/lestrrat-go/jwx/jwk"
+	"github.com/lestrrat-go/jwx/jws"
 )
 
 // Define the paths for the necessary input files
-const publicKeyPath = `denylist-out/pubkey.pem`
-const denylistPath = `denylist-out/denylist.jws`
+const publicKeyPath = `denylist/pubkey.pem`
+const denylistPath = `denylist/denylist.jws`
 
 // loadCerts loads the certificate files from the filesystem
 func loadCerts() ([]*x509.Certificate, error) {
@@ -101,7 +101,7 @@ func TestDeniedCerts(t *testing.T) {
 		jwkThumbprint := certKeyThumbprint(cert)
 
 		// Run a subtests for this certificate
-		t.Run(fmt.Sprintf("%s %s", cert.Issuer, cert.SerialNumber), func (t *testing.T) {
+		t.Run(fmt.Sprintf("%s %s", cert.Issuer, cert.SerialNumber), func(t *testing.T) {
 			// Loop through the denylist entries, looking for a matching entry
 			for _, entry := range denylist {
 				// Ensure the issuer, serial number, and key thumbprint all match this entry
@@ -125,7 +125,7 @@ func certKeyThumbprint(cert *x509.Certificate) string {
 	if err != nil {
 		return ""
 	}
-	
+
 	// Calculate and internally set the key thumbprint
 	jwk.AssignKeyID(key)
 
