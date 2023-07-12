@@ -27,9 +27,9 @@ OCSP is not easily prefetchable without a cooperating client implementing OCSP s
 Both CRL's and OCSP bring significant risk to the uptime of a network. 
 This denylist has been implemented in such a way that downtime is tolerated and the entire contents are prefetched and cacheable.
 
-## Key used
+## Supported key types
 
-The denylist currently only supports ed25519 keys.
+The denylist currently only supports PEM encoded ed25519 keys.
 
 # Instructions for adding a certificate to the denylist
 
