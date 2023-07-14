@@ -1,4 +1,4 @@
-.PHONY: denylist
+.PHONY: denylist test
 
 default:
 
