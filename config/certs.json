@@ -4,11 +4,5 @@
     "serialnumber": "86909351591313461694061157857735660045310273765",
     "jwkthumbprint": "xaVihytdhiID5wqCOsQbbb2_GuIb0r7m1GUgPIdBDjo",
     "reason": "blocked for testing purposes"
-  },
-  {
-    "issuer": "CN=Nuts Development Network Root CA",
-    "serialnumber": "316990454064926253224623110668298023584194098193",
-    "jwkthumbprint": "SXXNF14KAd5aqdeFWXL7gbNW9g9bJUwVfcy-nw_sUmk",
-    "reason": "invalid SAN, unresponding to help"
   }
 ]
