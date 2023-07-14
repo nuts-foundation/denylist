@@ -71,6 +71,7 @@ Copy this into `config/certs.json` and set the reason for blocking the certifica
 The key to sign the denylist is stored in the `NutsDenylist` vault on 1password in the `PrivateKey` item.
 
 ### 1password CLI (preferred)
+The instructions assume 1password versions 8 for the application and 2 for the CLI, and that CLI integration is enabled in application settings (under developer). 
 Install v2 of the 1password CLI by following the [instructions](https://developer.1password.com/docs/cli/get-started/) if needed.
 ```shell
 # sign in to the correct account
@@ -104,13 +105,15 @@ If the test passes, merge the resulting changes to the `main` branch with a pull
 
 
 ## Clear CDN cache
-The denylist is hosted on Github but distributed using [www.jsdelivr.com](https://www.jsdelivr.com), which is "A free CDN for open source projects".
-This CDN operates on top of multiple major CDNs and will provide us with a better uptime than Github can.
-The [default cache for jsdelivr](https://www.jsdelivr.com/documentation#id-caching) is 12 hours for files on Github branches.
-TODO: contact jsdelivr to see if/how we can speed this up.
-
+The denylist is hosted on GitHub but distributed using [www.jsdelivr.com](https://www.jsdelivr.com), which is "A free CDN for open source projects".
+This CDN operates on top of multiple major CDNs and will provide us with a better uptime than GitHub can.
 The denylist file can be found at https://cdn.jsdelivr.net/gh/nuts-foundation/denylist@main/denylist/denylist.jws. 
-This points to the `main` branch on the Github repo.
+This points to the `main` branch on the GitHub repo.
+
+The [default cache](https://www.jsdelivr.com/documentation#id-caching) for jsDelivr is 12 hours for files on GitHub branches.
+To speed this up, clear the cache for the denylist. 
+To do this go to https://www.jsdelivr.com/tools/purge and purge the full URL `https://cdn.jsdelivr.net/gh/nuts-foundation/denylist@main/denylist/denylist.jws`.
+This can also be done using the purge API. Instructions for this are in the vault item `jsDelivr Purge API instructions`.
 
 
 ## Troubleshooting
