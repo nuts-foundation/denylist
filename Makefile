@@ -1,3 +1,5 @@
+.PHONY: denylist
+
 default:
 
 denylist:
