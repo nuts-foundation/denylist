@@ -26,4 +26,4 @@ go.work
 
 # being super paranoid
 *.key
-*.pem
+#*.pem # can't be ignored since blocked certificates under certs/ are expected to be in this format.
